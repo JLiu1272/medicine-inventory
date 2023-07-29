@@ -1,16 +1,13 @@
 "use client";
 import { Heading } from "@chakra-ui/react";
-import { Box } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
 import { VStack } from "@chakra-ui/react";
@@ -85,7 +82,7 @@ export default function Home() {
     <VStack m={4} spacing={10} align="start">
       <Heading>Medicine Inventory</Heading>
       <Input onChange={handleInputChange} placeholder="Basic usage" />
-      <TableContainer>
+      <TableContainer width="100%">
         <Table variant="simple" size="lg">
           <Thead>
             <Tr>
