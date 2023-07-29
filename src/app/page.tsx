@@ -1,14 +1,20 @@
-"use client";
-import { Link } from "@chakra-ui/next-js";
-import { Heading } from "@chakra-ui/react";
+import Image from "next/image";
+
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
 export default function Home() {
   return (
-    <>
-      <Heading>Hello World</Heading>
-      <Link href="/about" color="blue.400" _hover={{ color: "blue.500" }}>
-        About
-      </Link>
-    </>
+    <main>
+      <Container>
+        <Box>
+          <Card>
+            <Typography variant="h2">Hello World ~</Typography>
+          </Card>
+        </Box>
+      </Container>
+    </main>
   );
 }
