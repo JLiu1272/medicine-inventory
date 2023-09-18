@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/next-js": "^2.1.5",
-    "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.2",
+    "@mui/x-data-grid": "6.14.0",
+    "@mui/icons-material": "^5.14.9",
+    "@mui/x-data-grid-generator": "^6.14.0",
     "@types/node": "20.4.5",
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
