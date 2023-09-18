@@ -18,7 +18,6 @@ import {
   GridRowId,
   GridRowModel,
   GridRowEditStopReasons,
-  GridValidRowModel,
 } from "@mui/x-data-grid";
 import { randomId } from "@mui/x-data-grid-generator";
 
