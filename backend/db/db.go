@@ -4,6 +4,8 @@ import (
 	"context"
 	"time"
 
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -61,6 +63,25 @@ func FindAll(client *mongo.Client, ctx context.Context, dataBase, col string) (*
 	// and of empty interface
 	result, err := collection.Find(ctx, map[string]string{})
 	return result, err
+}
+
+func FindById(client *mongo.Client, ctx context.Context, dataBase, col string, id string) (*mongo.SingleResult, error) {
+
+	// select database and collection ith Client.Database method
+	// and Database.Collection method
+	collection := client.Database(dataBase).Collection(col)
+
+	objectId, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return nil, err
+	}
+
+	filter := bson.D{{"_id", objectId}}
+
+	// InsertOne accept two argument of type Context
+	// and of empty interface
+	result := collection.FindOne(ctx, filter)
+	return result, nil
 }
 
 // insertMany is a user defined method, used to insert
