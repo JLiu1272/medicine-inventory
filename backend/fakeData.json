@@ -1,0 +1,26 @@
+[
+    {
+      ID: 1217,
+      name: "Panadol",
+      count: 25,
+      joinDate: new Date(),
+    },
+    {
+      ID: 1218,
+      name: "Tylenol",
+      count: 4,
+      joinDate: new Date(),
+    },
+    {
+      ID: 1219,
+      name: "Retinal",
+      count: 4,
+      joinDate: new Date(),
+    },
+    {
+      ID: 1220,
+      name: "Strepsils",
+      count: 3,
+      joinDate: new Date(),
+    },
+  ];
