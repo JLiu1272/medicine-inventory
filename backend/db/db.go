@@ -51,6 +51,18 @@ func InsertOne(client *mongo.Client, ctx context.Context, dataBase, col string, 
 	return result, err
 }
 
+func FindAll(client *mongo.Client, ctx context.Context, dataBase, col string) (*mongo.Cursor, error) {
+
+	// select database and collection ith Client.Database method
+	// and Database.Collection method
+	collection := client.Database(dataBase).Collection(col)
+
+	// InsertOne accept two argument of type Context
+	// and of empty interface
+	result, err := collection.Find(ctx, map[string]string{})
+	return result, err
+}
+
 // insertMany is a user defined method, used to insert
 // documents into collection returns result of
 // InsertMany and error if any.

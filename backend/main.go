@@ -9,6 +9,7 @@ import (
 func main() {
 	router := gin.Default()
 	router.POST("/insertMedicine", api.AddMedicine)
+	router.GET("/allMedicine", api.AllMedicine)
 
 	router.Run("localhost:8080")
 }

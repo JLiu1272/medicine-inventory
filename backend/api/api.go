@@ -16,16 +16,37 @@ type Medicine struct {
 	JoinDate time.Time `json:"joinDate"`
 }
 
-func allMedicines(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, "All Medicine")
-}
-
 func editMedicine(c *gin.Context, id string) {
 	c.IndentedJSON(http.StatusOK, "Edit Medicine")
 }
 
 func deleteMedicine(c *gin.Context, id string) {
 	c.IndentedJSON(http.StatusOK, "Delete Medicine")
+}
+
+func AllMedicine(c *gin.Context) {
+	var medicines []Medicine
+
+	client, ctx, cancel, err := db.Connect("mongodb://localhost:27017")
+	if err != nil {
+		c.IndentedJSON(http.StatusBadRequest, err)
+		return
+	}
+	// Release resource when main function is returned.
+	defer db.Close(client, ctx, cancel)
+
+	cursor, err := db.FindAll(client, ctx, "medicineInventoryDB",
+		"users")
+
+	cursor.All(ctx, &medicines)
+
+	// handle the error
+	if err != nil {
+		c.IndentedJSON(http.StatusBadRequest, err)
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, medicines)
 }
 
 func AddMedicine(c *gin.Context) {
