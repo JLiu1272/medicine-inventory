@@ -76,7 +76,7 @@ func FindById(client *mongo.Client, ctx context.Context, dataBase, col string, i
 		return nil, err
 	}
 
-	filter := bson.D{{"_id", objectId}}
+	filter := bson.D{{Key: "_id", Value: objectId}}
 
 	// InsertOne accept two argument of type Context
 	// and of empty interface
