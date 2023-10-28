@@ -65,6 +65,26 @@ func FindAll(client *mongo.Client, ctx context.Context, dataBase, col string) (*
 	return result, err
 }
 
+func UpdateById(client *mongo.Client, ctx context.Context, dataBase, col string, id string, newMedicine interface{}) (*mongo.UpdateResult, error) {
+
+	// select database and collection ith Client.Database method
+	// and Database.Collection method
+	collection := client.Database(dataBase).Collection(col)
+
+	objectId, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return nil, err
+	}
+
+	filter := bson.D{{Key: "_id", Value: objectId}}
+
+	// InsertOne accept two argument of type Context
+	// and of empty interface
+	result, err := collection.UpdateOne(ctx, filter, bson.D{{Key: "$set", Value: newMedicine}})
+	return result, err
+
+}
+
 func FindById(client *mongo.Client, ctx context.Context, dataBase, col string, id string) (*mongo.SingleResult, error) {
 
 	// select database and collection ith Client.Database method
